@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="JEM UNI AI Catalog — премиальный каталог AI-сервисов с поиском, разделами и быстрыми ссылками."
+    />
+    <title>JEM UNI AI Catalog</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="page-grid" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="JEM UNI AI Catalog">
+        <span class="brand-logo">
+          <img src="./assets/jem-uni-logo-transparent.png" alt="JEM UNI" />
+        </span>
+        <span class="brand-copy">
+          <span class="brand-text">JEM UNI</span>
+          <span class="brand-subtitle">AI Catalog</span>
+        </span>
+      </a>
+
+      <nav class="topnav" aria-label="Primary navigation">
+        <a href="#catalog" data-i18n="navCatalog">Каталог</a>
+        <a href="#sections" data-i18n="navSections">Разделы</a>
+        <a href="#about" data-i18n="navAbout">Качество</a>
+      </nav>
+
+      <div class="top-actions">
+        <button id="themeToggle" class="theme-button" type="button" data-i18n="themeLight">
+          Світла
+        </button>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button class="lang-button" type="button" data-lang="uk">UA</button>
+          <button class="lang-button" type="button" data-lang="en">EN</button>
+          <button class="lang-button" type="button" data-lang="ru">RU</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">JEM UNI AI Catalog</p>
+          <h1 id="hero-title" data-i18n="heroTitle">
+            Каталог AI-сервісів
+          </h1>
+          <p class="hero-lead" data-i18n="heroLead">
+            Знайди нейромережу під задачу: відео, тексти, сайти, продажі, дизайн, дані та автоматизацію.
+          </p>
+
+          <form class="hero-search" role="search" aria-label="Search AI services">
+            <label class="visually-hidden" for="searchInput" data-i18n="searchLabel">Поиск сервиса</label>
+            <input
+              id="searchInput"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              data-i18n-placeholder="searchPlaceholder"
+              placeholder="Наприклад: відео, текст, сайт..."
+            />
+            <button id="clearSearch" class="ghost-button" type="button" data-i18n="clear">Очистити</button>
+          </form>
+
+          <div class="hero-actions">
+            <a class="primary-button" href="#catalog" data-i18n="openCatalog">Відкрити каталог</a>
+            <button id="randomService" class="secondary-button" type="button" data-i18n="randomService">
+              Випадковий сервіс
+            </button>
+          </div>
+
+          <div class="hero-metrics" aria-label="Catalog metrics">
+            <div>
+              <strong id="totalServices">...</strong>
+              <span data-i18n="servicesMetric">Сервисов</span>
+            </div>
+            <div>
+              <strong id="totalCategories">...</strong>
+              <span data-i18n="categoriesMetric">Разделов</span>
+            </div>
+          </div>
+
+          <div class="hero-finds" aria-label="Random service picks">
+            <div class="hero-finds-head">
+              <strong data-i18n="heroFindsTitle">Випадкові знахідки</strong>
+              <button id="refreshHeroFinds" class="mini-refresh" type="button" data-i18n="refreshFinds">
+                Оновити
+              </button>
+            </div>
+            <div id="heroFindsTrack" class="hero-finds-track"></div>
+          </div>
+
+          <div class="hero-proof" aria-label="Catalog highlights">
+            <span data-i18n="proofSearch">Поиск по названию, тегам и описаниям</span>
+            <span data-i18n="proofLanguages">RU / UA / EN</span>
+            <span data-i18n="proofLinks">Активные ссылки на сервисы</span>
+          </div>
+        </div>
+
+        <div class="hero-device" aria-label="Catalog preview">
+          <div class="samurai-stage" aria-hidden="true">
+            <img src="./assets/ai-samurai.jpg" alt="" />
+            <span class="samurai-shade"></span>
+            <span class="blade-glow blade-glow-main"></span>
+            <span class="blade-glow blade-glow-soft"></span>
+            <span class="smoke smoke-one"></span>
+            <span class="smoke smoke-two"></span>
+            <span class="smoke smoke-three"></span>
+          </div>
+          <div class="hero-orbit" aria-hidden="true">
+            <span class="orbit-ring orbit-ring-one"></span>
+            <span class="orbit-ring orbit-ring-two"></span>
+            <span class="floating-logo">
+              <img src="./assets/jem-uni-logo-transparent.png" alt="" />
+            </span>
+            <span class="spark spark-one"></span>
+            <span class="spark spark-two"></span>
+            <span class="spark spark-three"></span>
+          </div>
+          <div class="kinetic-phone" aria-hidden="true">
+            <div class="dynamic-island"></div>
+            <div class="phone-screen">
+              <div class="phone-topline">
+                <span>JEM UNI</span>
+                <span id="phoneServicesTotal">...</span>
+              </div>
+              <div class="phone-headline">AI services<br />for fast tasks</div>
+              <div class="phone-search-pill">
+                <span></span>
+                <strong>Search catalog</strong>
+              </div>
+              <div class="phone-card phone-card-light">
+                <small>Top category</small>
+                <strong>Business operations</strong>
+              </div>
+              <div class="phone-card phone-card-dark">
+                <small>Picked service</small>
+                <strong>ChatGPT</strong>
+              </div>
+            </div>
+          </div>
+          <div class="device-shell">
+            <div class="device-bar">
+              <span></span>
+              <strong>JEM UNI</strong>
+              <span></span>
+            </div>
+            <div class="device-search">
+              <span data-i18n="deviceSearch">Что нужно найти?</span>
+            </div>
+            <div class="device-grid">
+              <div class="device-card active">
+                <small data-i18n="servicesMetric">Сервисов</small>
+                <strong id="deviceServicesTotal">...</strong>
+              </div>
+              <div class="device-card">
+                <small data-i18n="categoriesMetric">Разделов</small>
+                <strong>13</strong>
+              </div>
+            </div>
+            <div class="device-list">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="catalog" class="catalog-shell" aria-labelledby="catalog-title">
+        <aside class="filter-panel" aria-label="Catalog filters">
+          <div class="filter-head">
+            <p class="eyebrow" data-i18n="filterEyebrow">Фільтри</p>
+            <button id="resetFilters" class="small-button" type="button" data-i18n="reset">Скинути</button>
+          </div>
+          <div id="categoryFilters" class="category-filters"></div>
+          <div class="filter-block">
+            <label for="sortSelect" data-i18n="sortLabel">Сортування</label>
+            <select id="sortSelect">
+              <option value="featured" data-i18n="sortFeatured">Спочатку помітні</option>
+              <option value="name" data-i18n="sortName">За назвою</option>
+              <option value="category" data-i18n="sortCategory">За розділом</option>
+            </select>
+          </div>
+        </aside>
+
+        <section class="results-panel" aria-labelledby="catalog-title">
+          <div class="results-toolbar">
+            <div>
+              <p class="eyebrow" data-i18n="catalogEyebrow">База сервісів</p>
+              <h2 id="catalog-title" data-i18n="catalogTitle">Каталог сервісів</h2>
+            </div>
+            <p id="resultCount" class="result-count">...</p>
+          </div>
+          <form class="catalog-search" role="search" aria-label="Search catalog services">
+            <label class="visually-hidden" for="catalogSearchInput" data-i18n="searchLabel">Пошук сервісу</label>
+            <input
+              id="catalogSearchInput"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              data-i18n-placeholder="searchPlaceholder"
+              placeholder="Наприклад: відео, текст, сайт..."
+            />
+            <button id="catalogClearSearch" class="ghost-button" type="button" data-i18n="clear">Очистити</button>
+          </form>
+          <div id="activeChips" class="active-chips" aria-live="polite"></div>
+          <div id="servicesGrid" class="services-grid"></div>
+          <button id="showMore" class="load-more" type="button" data-i18n="showMore">Показати ще</button>
+          <p id="emptyState" class="empty-state" data-i18n="emptyState" hidden>
+            Нічого не знайдено. Спробуй інший запит або скинь фільтри.
+          </p>
+        </section>
+
+        <aside id="detailPanel" class="detail-panel" aria-live="polite"></aside>
+      </section>
+
+      <section id="sections" class="sections-band" aria-labelledby="sections-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="sectionsEyebrow">Розділи</p>
+          <h2 id="sections-title" data-i18n="sectionsTitle">Обери напрям задачі</h2>
+        </div>
+        <div id="categoryOverview" class="category-overview"></div>
+      </section>
+
+      <section class="spotlight-band" aria-labelledby="spotlight-title">
+        <div class="spotlight-copy">
+          <p class="eyebrow" data-i18n="spotlightEyebrow">AI-навігація</p>
+          <h2 id="spotlight-title" data-i18n="spotlightTitle">
+            Обирай сервіс не за шумом, а за задачею
+          </h2>
+          <p data-i18n="spotlightText">
+            Каталог працює як спокійний інтерфейс вибору: пошук, розділи та схожі інструменти ведуть до потрібної нейромережі швидше.
+          </p>
+          <div class="spotlight-points">
+            <span data-i18n="spotlightPointOne">Швидкий вхід через пошук</span>
+            <span data-i18n="spotlightPointTwo">Добірки за категоріями</span>
+            <span data-i18n="spotlightPointThree">Схожі сервіси поруч</span>
+          </div>
+        </div>
+        <div class="spotlight-visual" aria-hidden="true">
+          <img src="./assets/ai-muse.jpg" alt="" />
+          <span class="spotlight-light"></span>
+          <span class="data-shimmer data-shimmer-one"></span>
+          <span class="data-shimmer data-shimmer-two"></span>
+          <span class="data-shimmer data-shimmer-three"></span>
+        </div>
+      </section>
+
+      <section id="about" class="about-band" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="aboutEyebrow">Якість</p>
+          <h2 id="about-title" data-i18n="aboutTitle">Каталог має бути швидким, чистим і корисним</h2>
+        </div>
+        <div class="about-grid">
+          <div>
+            <h3 data-i18n="aboutUserTitle">Для посетителя</h3>
+            <p data-i18n="aboutUserText">
+              Поиск и разделы помогают быстро перейти от задачи к конкретному AI-сервису.
+            </p>
+          </div>
+          <div>
+            <h3 data-i18n="aboutOwnerTitle">Для бренда</h3>
+            <p data-i18n="aboutOwnerText">
+              Страница выглядит как отдельный продукт JEM UNI, а не как таблица со ссылками.
+            </p>
+          </div>
+          <div>
+            <h3 data-i18n="aboutNextTitle">Для публикации</h3>
+            <p data-i18n="aboutNextText">
+              После согласования можно вычистить описания, добавить ручные бейджи и готовить страницу к деплою.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <template id="serviceCardTemplate">
+      <article class="service-card">
+        <div class="card-top">
+          <span class="logo-wrap">
+            <img alt="" loading="lazy" />
+            <span class="logo-fallback"></span>
+          </span>
+          <div>
+            <h3></h3>
+            <p class="domain"></p>
+          </div>
+        </div>
+        <p class="service-description"></p>
+        <div class="tag-row"></div>
+        <div class="card-actions">
+          <button class="small-button details-button" type="button"></button>
+          <a class="open-link" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+      </article>
+    </template>
+
+    <script src="./src/data/services-data.js"></script>
+    <script src="./src/app.js"></script>
+  </body>
+</html>
